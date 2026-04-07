@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import usePokemonDetail from '../hooks/usePokemonDetail';
 import ErrorState from '../components/ErrorState';
+import Footer from '../components/Footer';
 
 const TYPE_COLORS: Record<string, string> = {
   normal: '#A8A878',
@@ -253,6 +254,8 @@ export default function DetailPage() {
           </div>
         </div>
       </div>
+
+      <Footer />
     </div>
   );
 }
