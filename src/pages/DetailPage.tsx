@@ -33,60 +33,65 @@ const STAT_NAMES: Record<string, string> = {
   speed: 'Speed',
 };
 
-function getStatBarColor(value: number): string {
-  if (value >= 100) return '#22c55e';
-  if (value >= 50) return '#facc15';
-  return '#ef4444';
-}
-
 function DetailSkeleton() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8 animate-pulse">
-      <div className="h-5 w-28 bg-gray-200 rounded mb-6" />
+      <div className="h-10 w-32 bg-gray-200 rounded-lg mb-6" />
 
-      <div className="rounded-2xl overflow-hidden bg-gradient-to-r from-purple-500 to-pink-500 p-8 flex flex-col items-center gap-3">
-        <div className="h-8 w-48 bg-white/30 rounded" />
-        <div className="h-5 w-16 bg-white/20 rounded" />
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-8 mt-4">
-        <div className="flex flex-col items-center">
-          <div className="bg-white rounded-2xl shadow p-4 -mt-16">
-            <div className="w-64 h-64 bg-gray-200 rounded-lg" />
-          </div>
-          <div className="flex gap-2 mt-4">
-            <div className="h-7 w-16 bg-gray-200 rounded-full" />
-            <div className="h-7 w-16 bg-gray-200 rounded-full" />
-          </div>
-          <div className="flex gap-6 mt-4">
-            <div className="h-10 w-20 bg-gray-200 rounded" />
-            <div className="h-10 w-20 bg-gray-200 rounded" />
-          </div>
+      <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-8 flex flex-col items-center gap-3">
+          <div className="h-8 w-48 bg-white/30 rounded" />
+          <div className="h-5 w-16 bg-white/20 rounded" />
         </div>
 
-        <div className="flex-1 space-y-6">
-          <div>
-            <div className="h-6 w-24 bg-gray-200 rounded mb-3" />
-            <div className="space-y-2">
-              {Array.from({ length: 6 }, (_, i) => (
-                <div key={i} className="flex items-center gap-3">
-                  <div className="w-24 h-4 bg-gray-200 rounded" />
-                  <div className="w-10 h-4 bg-gray-200 rounded" />
-                  <div className="flex-1 h-2 bg-gray-200 rounded-full" />
+        <div className="p-6 md:p-8">
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex flex-col items-center">
+              <div className="w-48 h-48 bg-gray-100 rounded-full -mt-32" />
+              <div className="flex gap-2 mt-4">
+                <div className="h-7 w-16 bg-gray-200 rounded-full" />
+                <div className="h-7 w-16 bg-gray-200 rounded-full" />
+              </div>
+              <div className="border border-gray-200 rounded-xl flex mt-4 w-full">
+                <div className="flex-1 p-4 flex flex-col items-center gap-1">
+                  <div className="h-4 w-12 bg-gray-200 rounded" />
+                  <div className="h-6 w-16 bg-gray-200 rounded" />
                 </div>
-              ))}
+                <div className="border-r border-gray-200" />
+                <div className="flex-1 p-4 flex flex-col items-center gap-1">
+                  <div className="h-4 w-12 bg-gray-200 rounded" />
+                  <div className="h-6 w-16 bg-gray-200 rounded" />
+                </div>
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="h-6 w-20 bg-gray-200 rounded mb-3" />
-            <div className="flex gap-2">
-              <div className="h-7 w-20 bg-gray-200 rounded-full" />
-              <div className="h-7 w-24 bg-gray-200 rounded-full" />
+
+            <div className="flex-1 space-y-6">
+              <div>
+                <div className="h-6 w-24 bg-gray-200 rounded mb-3" />
+                <div className="space-y-3">
+                  {Array.from({ length: 6 }, (_, i) => (
+                    <div key={i}>
+                      <div className="flex justify-between mb-1">
+                        <div className="w-20 h-4 bg-gray-200 rounded" />
+                        <div className="w-8 h-4 bg-gray-200 rounded" />
+                      </div>
+                      <div className="w-full h-2.5 bg-gray-100 rounded-full" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <div className="h-6 w-20 bg-gray-200 rounded mb-3" />
+                <div className="flex gap-2">
+                  <div className="h-7 w-20 bg-gray-200 rounded-full" />
+                  <div className="h-7 w-24 bg-gray-200 rounded-full" />
+                </div>
+              </div>
+              <div>
+                <div className="h-6 w-32 bg-gray-200 rounded mb-3" />
+                <div className="h-8 w-16 bg-gray-200 rounded" />
+              </div>
             </div>
-          </div>
-          <div>
-            <div className="h-6 w-32 bg-gray-200 rounded mb-3" />
-            <div className="h-8 w-16 bg-gray-200 rounded" />
           </div>
         </div>
       </div>
@@ -116,7 +121,7 @@ export default function DetailPage() {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Link
           to="/"
-          className="text-gray-600 flex items-center gap-1 mb-6 hover:text-gray-800 transition-colors"
+          className="inline-flex items-center gap-2 w-auto bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm hover:shadow-md transition text-gray-600 hover:text-gray-800 mb-6"
         >
           &larr; Back to List
         </Link>
@@ -134,110 +139,117 @@ export default function DetailPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <Link
         to="/"
-        className="text-gray-600 flex items-center gap-1 mb-6 hover:text-gray-800 transition-colors"
+        className="inline-flex items-center gap-2 w-auto bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-sm hover:shadow-md transition text-gray-600 hover:text-gray-800 mb-6"
       >
         &larr; Back to List
       </Link>
 
-      <div className="rounded-2xl overflow-hidden bg-gradient-to-r from-purple-500 to-pink-500 p-8 text-center text-white">
-        <h1 className="text-3xl font-bold capitalize">⚡ {data.name}</h1>
-        <p className="text-white/70 text-lg">
-          #{String(data.id).padStart(3, '0')}
-        </p>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-8 mt-4">
-        <div className="flex flex-col items-center">
-          <div className="bg-white rounded-2xl shadow p-4 -mt-16">
-            <img
-              src={
-                data.sprites.other['official-artwork'].front_default ??
-                data.sprites.front_default
-              }
-              alt={data.name}
-              className="w-64 h-64 object-contain"
-            />
-          </div>
-
-          <div className="flex gap-2 mt-4">
-            {data.types.map((t) => (
-              <span
-                key={t.type.name}
-                className="px-3 py-1 rounded-full text-white text-sm font-semibold capitalize"
-                style={{
-                  backgroundColor: TYPE_COLORS[t.type.name] ?? '#A8A878',
-                }}
-              >
-                {t.type.name}
-              </span>
-            ))}
-          </div>
-
-          <div className="flex gap-6 mt-4 text-gray-700">
-            <div className="text-center">
-              <p className="text-sm text-gray-500">Height</p>
-              <p className="font-semibold">
-                📏 {(data.height / 10).toFixed(1)} m
-              </p>
-            </div>
-            <div className="text-center">
-              <p className="text-sm text-gray-500">Weight</p>
-              <p className="font-semibold">
-                ⚖️ {(data.weight / 10).toFixed(1)} kg
-              </p>
-            </div>
-          </div>
+      <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+        <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-8 text-center text-white">
+          <h1 className="text-3xl font-bold capitalize">⚡ {data.name}</h1>
+          <p className="text-white/70 text-lg">
+            #{String(data.id).padStart(3, '0')}
+          </p>
         </div>
 
-        <div className="flex-1 space-y-6">
-          <div>
-            <h2 className="font-bold text-lg mb-3">Base Stats</h2>
-            <div className="space-y-2">
-              {data.stats.map((s) => (
-                <div key={s.stat.name} className="flex items-center gap-3">
-                  <span className="w-24 text-sm text-gray-600 text-right">
-                    {STAT_NAMES[s.stat.name] ?? s.stat.name}
+        <div className="p-6 md:p-8">
+          <div className="flex flex-col md:flex-row gap-8">
+            <div className="flex-1 flex-col items-center">
+              <div className="w-48 h-48 bg-gray-100 rounded-full flex items-center justify-center mx-auto">
+                <img
+                  src={
+                    data.sprites.other['official-artwork'].front_default ??
+                    data.sprites.front_default
+                  }
+                  alt={data.name}
+                  className="w-56 h-56 object-contain"
+                />
+              </div>
+
+              <div className="flex gap-2 mt-4 w-full justify-center">
+                {data.types.map((t) => (
+                  <span
+                    key={t.type.name}
+                    className="px-3 py-1 rounded-full text-white text-sm font-semibold capitalize"
+                    style={{
+                      backgroundColor: TYPE_COLORS[t.type.name] ?? '#A8A878',
+                    }}
+                  >
+                    {t.type.name}
                   </span>
-                  <span className="w-10 text-sm font-semibold text-right">
-                    {s.base_stat}
-                  </span>
-                  <div className="flex-1 bg-gray-200 rounded-full h-2">
-                    <div
-                      className="h-2 rounded-full"
-                      style={{
-                        width: `${(s.base_stat / 255) * 100}%`,
-                        backgroundColor: getStatBarColor(s.base_stat),
-                      }}
-                    />
-                  </div>
+                ))}
+              </div>
+
+              <div className="overflow-hidden flex mt-4 w-full gap-2">
+                <div className="flex-1 p-4 text-center bg-gray-50 rounded-xl overflow-hidden">
+                  <p className="text-sm text-gray-500">📏 Height</p>
+                  <p className="font-bold text-lg mt-1">
+                    {(data.height / 10).toFixed(1)} m
+                  </p>
                 </div>
-              ))}
+                <div className="flex-1 p-4 text-center bg-gray-50 rounded-xl overflow-hidden">
+                  <p className="text-sm text-gray-500">⚖️ Weight</p>
+                  <p className="font-bold text-lg mt-1">
+                    {(data.weight / 10).toFixed(1)} kg
+                  </p>
+                </div>
+              </div>
             </div>
-          </div>
 
-          <div>
-            <h2 className="font-bold text-lg mt-6 mb-3">Abilities</h2>
-            <div className="flex flex-wrap gap-2">
-              {data.abilities.map((a) => (
-                <span
-                  key={a.ability.name}
-                  className="bg-gray-100 rounded-full px-3 py-1 text-sm capitalize"
-                >
-                  {a.ability.name.replace(/-/g, ' ')}
-                  {a.is_hidden && (
-                    <span className="text-xs text-gray-400 ml-1">(Hidden)</span>
-                  )}
+            <div className="flex-1 space-y-6">
+              <div>
+                <h2 className="font-bold text-lg mb-3">Base Stats</h2>
+                <div className="space-y-3">
+                  {data.stats.map((s) => (
+                    <div key={s.stat.name}>
+                      <div className="flex justify-between mb-1">
+                        <span className="text-sm font-medium text-gray-700">
+                          {STAT_NAMES[s.stat.name] ?? s.stat.name}
+                        </span>
+                        <span className="text-sm text-gray-500">
+                          {s.base_stat}
+                        </span>
+                      </div>
+                      <div className="w-full bg-gray-100 rounded-full h-2.5">
+                        <div
+                          className="bg-gray-800 h-2.5 rounded-full"
+                          style={{
+                            width: `${(s.base_stat / 255) * 100}%`,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h2 className="font-bold text-lg mt-6 mb-3">Abilities</h2>
+                <div className="flex flex-wrap gap-2">
+                  {data.abilities.map((a) => (
+                    <span
+                      key={a.ability.name}
+                      className="bg-gray-100 rounded-full px-3 py-1 text-sm capitalize"
+                    >
+                      {a.ability.name.replace(/-/g, ' ')}
+                      {a.is_hidden && (
+                        <span className="text-xs text-gray-400 ml-1">
+                          (Hidden)
+                        </span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <h2 className="font-bold text-lg mb-3">Base Experience</h2>
+                <span className="text-2xl font-bold text-green-600">
+                  {data.base_experience ?? 'Unknown'}{' '}
+                  {data.base_experience != null && 'XP'}
                 </span>
-              ))}
+              </div>
             </div>
-          </div>
-
-          <div className="mt-4">
-            <h2 className="font-bold text-lg mb-3">Base Experience</h2>
-            <span className="text-2xl font-bold text-green-600">
-              {data.base_experience ?? 'Unknown'}{' '}
-              {data.base_experience != null && 'XP'}
-            </span>
           </div>
         </div>
       </div>
